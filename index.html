@@ -540,6 +540,17 @@ font-size: 18px;
   100% { transform: scale(1); opacity: 1; }
 }
   
+  .eye-btn {
+  position: relative;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 40px;
+  color: cyan;
+  user-select: none;
+  
+  
   
 .multiplier { background: #28a745; }   /* vert */
 .round { background: #17a2b8; }        /* bleu turquoise */
@@ -584,7 +595,7 @@ canvas {
     <!-- TITRE GÉANT -->
     <h1 style="
       font-size:68px;
-      margin-bottom:45px;
+      margin-bottom:35px;
       color:#00ffcc;
       text-shadow:
         0 0 0px #00ffcc,
@@ -593,29 +604,44 @@ canvas {
       🔐 Accès Sécurisé
       
     </h1>   
- 
+<p style="
+  font-size:22px;
+  margin-top:10px;
+  margin-bottom:30px;
+  font-size:40px;
+  color:#94a3b8;
+">
+   Apidiro ny mot de passe
+</p>
     <input type="password" id="pass" placeholder="Mot de passe"
       style="
         width:80%;
         padding:28px;
+      margin-left: 9px;
+    
       margin-bottom:35px;
       border: 1px solid rgba(0,255,255,0.15);
   box-shadow: 
-    0 0 30px rgba(0,255,255,0.5),
+    0 0 30px rgba(0,255,255,0.2),
     inset 0 0 10px rgba(0,255,255,0.7);
         font-size:42px;
         border-radius:12px;
         border:none;
         outline:none;
         text-align:center;
+      
       ">
+    <span class="eye-btn" onclick="togglePassword(this)">👁</span>
+    
+    <p id="error" style="color:red;font-size:30px;margin-top:15px;"></p>
 
     <br><br>
 
     <button onclick="checkPass()" style="
-      width:60%;
-      padding:30px;
+      width:40%;
+      padding:25px;
       font-size:50px;
+      margin-bottom:1px;
       border:none;
       border-radius:32px;
       background:linear-gradient(90deg,#00f5a0,#00d9f5);
@@ -625,8 +651,6 @@ canvas {
     ">
       Entrer
     </button>
-
-    <p id="error" style="color:white;font-size:50px;margin-top:15px;"></p>
 
   </div>
 </div>
@@ -729,7 +753,17 @@ function checkPass(){
   if(pass === "TOJO"){
     document.getElementById("loginScreen").style.display = "none";
   } else {
-    document.getElementById("error").innerText = "❌ Mot de passe diso!";
+    document.getElementById("error").innerText = " Mot de passe incorrect!";
+    
+  }
+}
+  function togglePassword(){
+  let input = document.getElementById("pass");
+
+  if(input.type === "password"){
+    input.type = "text";
+  } else {
+    input.type = "password";
   }
 }
   
