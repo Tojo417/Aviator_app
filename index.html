@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Aviator Predictor - By TOJO</title>
   <link rel="stylesheet" href="style.css">
-
+<script src="script.js"></script>
 <style>
 body {
   margin: 10px;
@@ -554,8 +554,83 @@ canvas {
 }
 </style>
 </head>
+<div id="loginScreen" style="
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top, #0f172a, #020617);
+  z-index:9999;
+">
+
+  <!-- BORDURE GÉANTE -->
+  <div style="
+    width:80%;
+    max-width:600px;
+    padding:80px;
+    border-radius:25px;
+    border:3px solid rgba(0,255,204,0.4);
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(15px);
+    box-shadow:
+      0 0 25px rgba(0,255,204,0.3),
+      inset 0 0 10px rgba(0,255,204,0.1);
+    text-align:center;
+    color:white;
+  ">
+    
+    
+    <!-- TITRE GÉANT -->
+    <h1 style="
+      font-size:68px;
+      margin-bottom:45px;
+      color:#00ffcc;
+      text-shadow:
+        0 0 0px #00ffcc,
+        0 0 0px #00d9f5;
+    ">
+      🔐 Accès Sécurisé
+      
+    </h1>   
+ 
+    <input type="password" id="pass" placeholder="Mot de passe"
+      style="
+        width:80%;
+        padding:28px;
+      margin-bottom:35px;
+      border: 1px solid rgba(0,255,255,0.15);
+  box-shadow: 
+    0 0 30px rgba(0,255,255,0.5),
+    inset 0 0 10px rgba(0,255,255,0.7);
+        font-size:42px;
+        border-radius:12px;
+        border:none;
+        outline:none;
+        text-align:center;
+      ">
+
+    <br><br>
+
+    <button onclick="checkPass()" style="
+      width:60%;
+      padding:30px;
+      font-size:50px;
+      border:none;
+      border-radius:32px;
+      background:linear-gradient(90deg,#00f5a0,#00d9f5);
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 0 20px rgba(0,255,204,0.4);
+    ">
+      Entrer
+    </button>
+
+    <p id="error" style="color:white;font-size:50px;margin-top:15px;"></p>
+
+  </div>
+</div>
 <body>
-   
   
 <div class="settings">
   <button onclick="toggleSettings()">⚙️</button>
@@ -647,6 +722,16 @@ canvas {
 </div>
 
 <script>
+  
+function checkPass(){
+  let pass = document.getElementById("pass").value;
+
+  if(pass === "TOJO"){
+    document.getElementById("loginScreen").style.display = "none";
+  } else {
+    document.getElementById("error").innerText = "❌ Mot de passe diso!";
+  }
+}
   
   function toggleSettings(){
   let panel = document.getElementById("settingsPanel");
@@ -822,7 +907,6 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("Service Worker enregistré"))
     .catch(err => console.error("Erreur SW:", err));
 }
-  <script src="script.js"></script>
 </script>
 </body>
 </html>
