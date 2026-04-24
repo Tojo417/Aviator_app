@@ -551,27 +551,36 @@ font-size: 18px;
   user-select: none;
   
   }
-    .footer {
-  position: absolute;
-  bottom: 0;
-  margin-top: 140px;
-  width: 30%;
-  top: 83%;
-  right :5px;
-  padding: 70px;
-  text-align: center;
-  
-    }
 
-.close-btn {
-  
-  background: red;
+.logout-btn {
+  padding: 16px;
+  position: absolute;
+  font-size: 28px;
+  margin-top: 5px;
+  right: 380px;
+  top: 85%;
   color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  font-size: 58px;
+  background: transparent;
+  border: 1px solid cyan;
+  border-radius: 10px;
   cursor: pointer;
+  width: 20%;
+  box-shadow:
+    0 0 10px cyan,
+    0 0 20px rgba(0,255,255,0.5),
+    inset 0 0 10px rgba(0,255,255,0.3);
+
+  transition: 0.3s;
+}
+
+  
+.logout-btn:hover {
+  background: cyan;
+  color: black;
+  box-shadow:
+    0 0 20px cyan,
+    0 0 40px cyan,
+    0 0 60px cyan;
 }
     
   .good-luck {
@@ -770,17 +779,16 @@ canvas {
   <div class="warning-footer">
 🚫⚠️ INTERDIT : AZA MIDITRA RAHA SENDRA RATSY NY TOUR
 </div>
-  
-  <div class="footer">
-  <button class="close-btn" onclick="quitApp()">Quitter</button>
-  </div>
  
-  
-  
   <div class="result" id="result"></div>
   
    <div class="good-luck">Bonne chance 🍀</div>
-</div>
+  
+<button class="logout-btn" onclick="logout()">
+  Déconnecter
+</button>
+  
+ 
   <canvas id="confidenceChart" width="400" height="200"></canvas>
 </div>
 </div>
@@ -790,13 +798,14 @@ canvas {
 function checkPass(){
   let pass = document.getElementById("pass").value;
 
-  if(pass === "TOJO"){
+  if(pass === "t123"){
     document.getElementById("loginScreen").style.display = "none";
   } else {
     document.getElementById("error").innerText = " Mot de passe incorrect!";
     
   }
 }
+  
   function togglePassword(){
   let input = document.getElementById("pass");
 
@@ -807,16 +816,19 @@ function checkPass(){
   }
 }
   
-  function quitApp() {
-  alert("Application fermée");
+function logout() {
+  // esorina session
+  localStorage.removeItem("loggedIn");
+  
+document.getElementById("pass").value = "";
+  document.getElementById("error").textContent = "";
+  
+  
+  // miverina login screen
+  document.getElementById("loginScreen").style.display = "flex";
 
-  // Android / Sketchware
-  if (window.Android) {
-    Android.closeApp();
-  } else {
-    window.close();
-  }
 }
+
   
   
   function toggleSettings(){
