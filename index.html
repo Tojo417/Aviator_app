@@ -140,9 +140,9 @@ body {
   width: 50%;
   position: absolute;
   gap: 100px;
-  height: 75px;    
+  height: 70px;    
   right: 90px;
-  top: 27%;
+  top: 29%;
   transform: translateY(-50%);
   padding: 5px;
   border-radius: 12px;
@@ -347,13 +347,14 @@ input {
 .quick-mult button {
   flex: 1;
   padding: 20px;
+  font-family: 'Courier New', monospace;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 20px;
 
   background: rgba(0,255,150,0.15);
-  color: yellow;
+  color: white;
   font-weight: bold;
 
   transition: 0.2s;
@@ -556,19 +557,15 @@ font-size: 18px;
   padding: 16px;
   position: absolute;
   font-size: 28px;
-  margin-top: 5px;
+  margin-top: 10px;
   right: 380px;
   top: 85%;
   color: white;
   background: transparent;
-  border: 1px solid cyan;
+  border: 0,9px solid cyan;
   border-radius: 10px;
   cursor: pointer;
   width: 20%;
-  box-shadow:
-    0 0 10px cyan,
-    0 0 20px rgba(0,255,255,0.5),
-    inset 0 0 10px rgba(0,255,255,0.3);
 
   transition: 0.3s;
 }
@@ -583,15 +580,10 @@ font-size: 18px;
     0 0 60px cyan;
 }
     
-  .good-luck {
- 
-    width: 70%;
-    padding: 40px;
-    text-align: center;
-  color: WHITE;
-  font-size: 60px;
-  font-weight: bold;
-}
+  m
+
+
+  
 .multiplier { background: #28a745; }   /* vert */
 .round { background: #17a2b8; }        /* bleu turquoise */
 .confidence { background: #ffc107; color:#333; }   /* jaune */
@@ -782,7 +774,6 @@ canvas {
  
   <div class="result" id="result"></div>
   
-   <div class="good-luck">Bonne chance 🍀</div>
   
 <button class="logout-btn" onclick="logout()">
   Déconnecter
@@ -794,6 +785,8 @@ canvas {
 </div>
 
 <script>
+  
+  
   
 function checkPass(){
   let pass = document.getElementById("pass").value;
@@ -906,10 +899,14 @@ function predict(){
       <div style="
         margin-top:25px;
         padding:15px;
+        font-size : 20px;
         border-radius:15px;
-        background:rgba(255,0,0,0.15);
+        background: rgba(255,255,255,0);
         color:white;
         text-align:center;
+        box-shadow:
+        0 0 15px rgba(0,0,0,0.4),
+        inset 0 0 5px rgba(255,255,255,0.05);
         font-weight:bold;
         animation: fadeIn 0.3s ease;
       ">
